@@ -3,4 +3,5 @@ include ':jsonpullparser-apt'
 include ':jsonpullparser-benchmark'
 include ':jsonpullparser-google-http-client'
 include ':jsonpullparser-usage'
+include ':jsonpullparser-android-sample'
 rootProject.name = "JsonPullParser"
