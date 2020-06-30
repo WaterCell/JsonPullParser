@@ -16,6 +16,12 @@ allprojects {
     }
 }
 
+project.ext {
+    repository = "file://${new File(rootDir, "repository")}"
+    version = '1.6.9'
+    groupId = 'net.vvakame'
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
