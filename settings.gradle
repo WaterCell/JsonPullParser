@@ -1,0 +1,2 @@
+include ':jsonpullparser-core'
+rootProject.name = "JsonPullParser"

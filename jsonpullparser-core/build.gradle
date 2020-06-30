@@ -1,0 +1,10 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'net.sf.json-lib:json-lib:2.4:jdk15'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
