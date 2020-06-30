@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':jsonpullparser-core')
+    implementation 'com.google.http-client:google-http-client:1.35.0'
+    testImplementation 'com.google.http-client:google-http-client-test:1.35.0'
+    testImplementation 'com.google.http-client:google-http-client-jackson2:1.35.0'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
