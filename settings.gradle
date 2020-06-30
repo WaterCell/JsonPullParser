@@ -1,2 +1,3 @@
 include ':jsonpullparser-core'
+include ':jsonpullparser-apt'
 rootProject.name = "JsonPullParser"
