@@ -22,14 +22,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.vvakame.sample.ComplexData2;
-import net.vvakame.sample.ComplexData2Generated;
+import net.vvakame.sample.ComplexData2Gen;
 import net.vvakame.sample.MiniData;
 import net.vvakame.sample.PrimitiveTypeData;
-import net.vvakame.sample.PrimitiveTypeDataGenerated;
+import net.vvakame.sample.PrimitiveTypeDataGen;
 import net.vvakame.sample.SortOrderData1;
-import net.vvakame.sample.SortOrderData1Generated;
+import net.vvakame.sample.SortOrderData1Gen;
 import net.vvakame.sample.SortOrderData2;
-import net.vvakame.sample.SortOrderData2Generated;
+import net.vvakame.sample.SortOrderData2Gen;
 import net.vvakame.util.jsonpullparser.JsonFormatException;
 import net.vvakame.util.jsonpullparser.util.JsonArray;
 import net.vvakame.util.jsonpullparser.util.JsonHash;
@@ -59,10 +59,10 @@ public class JsonKeyTest {
 		String json =
 				"{\"bool\":true,\"c\":\"g\",\"b\":1,\"s\":2,\"i\":3,\"l\":4,\"f\":1.1,\"d\":2.2}";
 
-		PrimitiveTypeData data = PrimitiveTypeDataGenerated.get(json);
+		PrimitiveTypeData data = PrimitiveTypeDataGen.get(json);
 
 		StringWriter writer = new StringWriter();
-		PrimitiveTypeDataGenerated.encode(writer, data);
+		PrimitiveTypeDataGen.encode(writer, data);
 
 		String toJson = writer.toString();
 		JsonHash jsonHash = JsonHash.fromString(toJson);
@@ -90,7 +90,7 @@ public class JsonKeyTest {
 		String json =
 				"{\"name\":\"hoge\",\"list1\":[{\"id\":1}],\"list2\":[{\"id\":2},{\"id\":3}],\"data\":{\"id\":4}}";
 
-		ComplexData2 data = ComplexData2Generated.get(json);
+		ComplexData2 data = ComplexData2Gen.get(json);
 
 		assertThat(data.getName(), nullValue());
 		assertThat(data.getList1(), notNullValue());
@@ -101,7 +101,7 @@ public class JsonKeyTest {
 		data.setList2(new ArrayList<MiniData>());
 
 		StringWriter writer = new StringWriter();
-		ComplexData2Generated.encode(writer, data);
+		ComplexData2Gen.encode(writer, data);
 
 		String toJson = writer.toString();
 		JsonHash jsonHash = JsonHash.fromString(toJson);
@@ -121,7 +121,7 @@ public class JsonKeyTest {
 	public void Out1() throws IllegalStateException, IOException, JsonFormatException {
 
 		StringWriter writer = new StringWriter();
-		ComplexData2Generated.encode(writer, null);
+		ComplexData2Gen.encode(writer, null);
 
 		String toJson = writer.toString();
 		assertThat(toJson, is("{}"));
@@ -139,7 +139,7 @@ public class JsonKeyTest {
 
 		ComplexData2 data = new ComplexData2();
 		StringWriter writer = new StringWriter();
-		ComplexData2Generated.encode(writer, data);
+		ComplexData2Gen.encode(writer, data);
 
 		String toJson = writer.toString();
 		JsonHash jsonHash = JsonHash.fromString(toJson);
@@ -159,7 +159,7 @@ public class JsonKeyTest {
 	public void Out3() throws IllegalStateException, IOException, JsonFormatException {
 
 		StringWriter writer = new StringWriter();
-		ComplexData2Generated.encodeList(writer, null);
+		ComplexData2Gen.encodeList(writer, null);
 
 		String toJson = writer.toString();
 		assertThat(toJson, is("[]"));
@@ -178,7 +178,7 @@ public class JsonKeyTest {
 		List<ComplexData2> list = new ArrayList<ComplexData2>();
 		list.add(new ComplexData2());
 		StringWriter writer = new StringWriter();
-		ComplexData2Generated.encodeList(writer, list);
+		ComplexData2Gen.encodeList(writer, list);
 
 		String toJson = writer.toString();
 		JsonArray jsonArray = JsonArray.fromString(toJson);
@@ -199,13 +199,13 @@ public class JsonKeyTest {
 		{
 			SortOrderData1 data1 = new SortOrderData1();
 			StringWriter writer = new StringWriter();
-			SortOrderData1Generated.encode(writer, data1);
+			SortOrderData1Gen.encode(writer, data1);
 			assertThat(writer.toString(), is("{\"a\":0,\"b\":0}"));
 		}
 		{
 			SortOrderData2 data2 = new SortOrderData2();
 			StringWriter writer = new StringWriter();
-			SortOrderData2Generated.encode(writer, data2);
+			SortOrderData2Gen.encode(writer, data2);
 			assertThat(writer.toString(), is("{\"b\":0,\"a\":0}"));
 		}
 	}

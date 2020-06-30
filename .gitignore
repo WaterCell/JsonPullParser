@@ -16,3 +16,8 @@ pom.xml.releaseBackup
 release.properties
 
 target/
+
+.idea
+.gradle
+*/build
+local.properties

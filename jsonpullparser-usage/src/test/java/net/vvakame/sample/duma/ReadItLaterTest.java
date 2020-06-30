@@ -28,7 +28,7 @@ public class ReadItLaterTest {
 				"{\"status\":\"1\",\"since\":\"1245626956\",\"list\":{\"93817\":{\"item_id\":\"93817\",\"url\":\"http://url.com\",\"title\":\"Page Title\",\"time_updated\":\"1245626956\",\"time_added\":\"1245626956\",\"tags\":\"comma,seperated,list\",\"state\":\"0\"},\"935812\":{\"item_id\":\"935812\",\"url\":\"http://google.com\",\"title\":\"Google\",\"time_updated\":\"1245626956\",\"time_added\":\"1245626956\",\"tags\":\"comma,seperated,list\",\"state\":\"1\"}}}";
 
 		// JSON→POJO
-		ReadItLater later = ReadItLaterGenerated.get(json);
+		ReadItLater later = ReadItLaterGen.get(json);
 
 		assertThat(later.getStatus(), is("1"));
 		assertThat(later.getSince(), is("1245626956"));
@@ -57,11 +57,11 @@ public class ReadItLaterTest {
 		// POJO→JSON
 		// めんどいからもっかい復号しておｋだったらおｋ
 		StringWriter writer = new StringWriter();
-		ReadItLaterGenerated.encode(writer, later);
+		ReadItLaterGen.encode(writer, later);
 		json = writer.toString();
 
 		// JSON→POJO
-		later = ReadItLaterGenerated.get(json);
+		later = ReadItLaterGen.get(json);
 
 		assertThat(later.getStatus(), is("1"));
 		assertThat(later.getSince(), is("1245626956"));

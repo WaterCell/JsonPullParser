@@ -24,7 +24,7 @@ public class Issue2Test {
 		Child0ValueP0 bar = new Child0ValueP0();
 		StringWriter sw = new StringWriter();
 		try {
-			Child0ValueP0Generated.encode(sw, bar);
+			Child0ValueP0Gen.encode(sw, bar);
 		} catch (IOException e) {
 		}
 		assertThat(sw.toString(), is("{}"));
@@ -39,7 +39,7 @@ public class Issue2Test {
 		Child0ValueP1 bar = new Child0ValueP1();
 		StringWriter sw = new StringWriter();
 		try {
-			Child0ValueP1Generated.encode(sw, bar);
+			Child0ValueP1Gen.encode(sw, bar);
 		} catch (IOException e) {
 		}
 		assertThat(sw.toString(), is("{\"piyo\":0}"));
@@ -54,7 +54,7 @@ public class Issue2Test {
 		Child1ValueP0 bar = new Child1ValueP0();
 		StringWriter sw = new StringWriter();
 		try {
-			Child1ValueP0Generated.encode(sw, bar);
+			Child1ValueP0Gen.encode(sw, bar);
 		} catch (IOException e) {
 		}
 		assertThat(sw.toString(), is("{\"hoge\":0}"));
@@ -69,7 +69,7 @@ public class Issue2Test {
 		Child1ValueP1 bar = new Child1ValueP1();
 		StringWriter sw = new StringWriter();
 		try {
-			Child1ValueP1Generated.encode(sw, bar);
+			Child1ValueP1Gen.encode(sw, bar);
 		} catch (IOException e) {
 		}
 		assertThat(sw.toString(), is("{\"piyo\":0,\"hoge\":0}"));
@@ -84,7 +84,7 @@ public class Issue2Test {
 		{
 			StringWriter sw = new StringWriter();
 			try {
-				Grandchild0ValueC0P0Generated.encode(sw, new Grandchild0ValueC0P0());
+				Grandchild0ValueC0P0Gen.encode(sw, new Grandchild0ValueC0P0());
 			} catch (IOException e) {
 			}
 			assertThat(sw.toString(), is("{}"));
@@ -92,7 +92,7 @@ public class Issue2Test {
 		{
 			StringWriter sw = new StringWriter();
 			try {
-				Grandchild0ValueC1P0Generated.encode(sw, new Grandchild0ValueC1P0());
+				Grandchild0ValueC1P0Gen.encode(sw, new Grandchild0ValueC1P0());
 			} catch (IOException e) {
 			}
 			assertThat(sw.toString(), is("{\"hoge\":0}"));
@@ -100,7 +100,7 @@ public class Issue2Test {
 		{
 			StringWriter sw = new StringWriter();
 			try {
-				Grandchild1ValueC0P0Generated.encode(sw, new Grandchild1ValueC0P0());
+				Grandchild1ValueC0P0Gen.encode(sw, new Grandchild1ValueC0P0());
 			} catch (IOException e) {
 			}
 			assertThat(sw.toString(), is("{\"fuga\":0}"));
@@ -108,7 +108,7 @@ public class Issue2Test {
 		{
 			StringWriter sw = new StringWriter();
 			try {
-				Grandchild1ValueC1P0Generated.encode(sw, new Grandchild1ValueC1P0());
+				Grandchild1ValueC1P0Gen.encode(sw, new Grandchild1ValueC1P0());
 			} catch (IOException e) {
 			}
 			assertThat(sw.toString(), is("{\"hoge\":0,\"fuga\":0}"));
@@ -116,7 +116,7 @@ public class Issue2Test {
 		{
 			StringWriter sw = new StringWriter();
 			try {
-				Grandchild0ValueC0P1Generated.encode(sw, new Grandchild0ValueC0P1());
+				Grandchild0ValueC0P1Gen.encode(sw, new Grandchild0ValueC0P1());
 			} catch (IOException e) {
 			}
 			assertThat(sw.toString(), is("{\"piyo\":0}"));
@@ -124,7 +124,7 @@ public class Issue2Test {
 		{
 			StringWriter sw = new StringWriter();
 			try {
-				Grandchild0ValueC1P1Generated.encode(sw, new Grandchild0ValueC1P1());
+				Grandchild0ValueC1P1Gen.encode(sw, new Grandchild0ValueC1P1());
 			} catch (IOException e) {
 			}
 			assertThat(sw.toString(), is("{\"piyo\":0,\"hoge\":0}"));
@@ -132,7 +132,7 @@ public class Issue2Test {
 		{
 			StringWriter sw = new StringWriter();
 			try {
-				Grandchild1ValueC0P1Generated.encode(sw, new Grandchild1ValueC0P1());
+				Grandchild1ValueC0P1Gen.encode(sw, new Grandchild1ValueC0P1());
 			} catch (IOException e) {
 			}
 			assertThat(sw.toString(), is("{\"piyo\":0,\"fuga\":0}"));
@@ -140,7 +140,7 @@ public class Issue2Test {
 		{
 			StringWriter sw = new StringWriter();
 			try {
-				Grandchild1ValueC1P1Generated.encode(sw, new Grandchild1ValueC1P1());
+				Grandchild1ValueC1P1Gen.encode(sw, new Grandchild1ValueC1P1());
 			} catch (IOException e) {
 			}
 			assertThat(sw.toString(), is("{\"piyo\":0,\"hoge\":0,\"fuga\":0}"));

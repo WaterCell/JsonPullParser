@@ -1,0 +1,16 @@
+apply plugin: 'java-library'
+
+repositories {
+    maven { url 'http://maven.seasar.org/maven2' }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':jsonpullparser-core')
+    implementation 'org.mvel:mvel2:2.4.8.Final'
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.seasar.aptina:aptina-unit:1.0.0'
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

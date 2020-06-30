@@ -31,38 +31,38 @@ import java.util.Date;
 import java.util.List;
 
 import net.vvakame.sample.BaseData;
-import net.vvakame.sample.BaseDataGenerated;
+import net.vvakame.sample.BaseDataGen;
 import net.vvakame.sample.ComplexData;
 import net.vvakame.sample.ComplexData.InternalEnum;
-import net.vvakame.sample.ComplexDataGenerated;
+import net.vvakame.sample.ComplexDataGen;
 import net.vvakame.sample.ContainsAnotherPackageObjectData;
-import net.vvakame.sample.ContainsAnotherPackageObjectDataGenerated;
+import net.vvakame.sample.ContainsAnotherPackageObjectDataGen;
 import net.vvakame.sample.ContainsAnotherPackageObjectDataJsonMeta;
 import net.vvakame.sample.ExtendsData1;
-import net.vvakame.sample.ExtendsData1Generated;
+import net.vvakame.sample.ExtendsData1Gen;
 import net.vvakame.sample.ExtendsData2;
-import net.vvakame.sample.ExtendsData2Generated;
+import net.vvakame.sample.ExtendsData2Gen;
 import net.vvakame.sample.ForInnerClassData;
 import net.vvakame.sample.ForInnerClassData.InnerClassA.InnerClassAB;
 import net.vvakame.sample.ForInnerClassData.InnerClassB;
-import net.vvakame.sample.ForInnerClassDataGenerated;
+import net.vvakame.sample.ForInnerClassDataGen;
 import net.vvakame.sample.ForInnerClassDataJsonMeta;
-import net.vvakame.sample.InnerClassABGenerated;
+import net.vvakame.sample.InnerClassABGen;
 import net.vvakame.sample.InnerClassABJsonMeta;
-import net.vvakame.sample.InnerClassBGenerated;
+import net.vvakame.sample.InnerClassBGen;
 import net.vvakame.sample.InnerClassBJsonMeta;
 import net.vvakame.sample.MiniData;
-import net.vvakame.sample.MiniDataGenerated;
+import net.vvakame.sample.MiniDataGen;
 import net.vvakame.sample.PrimitiveTypeData;
-import net.vvakame.sample.PrimitiveTypeDataGenerated;
+import net.vvakame.sample.PrimitiveTypeDataGen;
 import net.vvakame.sample.PrimitiveWrapperListData;
-import net.vvakame.sample.PrimitiveWrapperListDataGenerated;
+import net.vvakame.sample.PrimitiveWrapperListDataGen;
 import net.vvakame.sample.SampleEnum;
 import net.vvakame.sample.TestData;
-import net.vvakame.sample.TestDataGenerated;
+import net.vvakame.sample.TestDataGen;
 import net.vvakame.sample.anotherpackage.AnotherPackageClass;
 import net.vvakame.sample.twitter.Tweet;
-import net.vvakame.sample.twitter.TweetGenerated;
+import net.vvakame.sample.twitter.TweetGen;
 import net.vvakame.util.jsonpullparser.JsonFormatException;
 import net.vvakame.util.jsonpullparser.JsonPullParser;
 import net.vvakame.util.jsonpullparser.builder.JsonModelCoder;
@@ -95,7 +95,7 @@ public class JsonAnnotationProcessorTest {
 
 		JsonPullParser parser = JsonPullParser.newParser(json);
 
-		TestData data = TestDataGenerated.get(parser);
+		TestData data = TestDataGen.get(parser);
 
 		assertThat(data.getName(), is("vvakame"));
 		assertThat(data.getPackageName(), is("net.vvakame"));
@@ -117,7 +117,7 @@ public class JsonAnnotationProcessorTest {
 
 		JsonPullParser parser = JsonPullParser.newParser(json);
 
-		PrimitiveTypeData data = PrimitiveTypeDataGenerated.get(parser);
+		PrimitiveTypeData data = PrimitiveTypeDataGen.get(parser);
 
 		assertThat(data.isBool(), is(true));
 		assertThat(data.getC(), is('c'));
@@ -142,7 +142,7 @@ public class JsonAnnotationProcessorTest {
 
 		JsonPullParser parser = JsonPullParser.newParser(json);
 
-		List<PrimitiveTypeData> list = PrimitiveTypeDataGenerated.getList(parser);
+		List<PrimitiveTypeData> list = PrimitiveTypeDataGen.getList(parser);
 
 		assertThat(list.size(), is(2));
 	}
@@ -174,7 +174,7 @@ public class JsonAnnotationProcessorTest {
 
 		JsonPullParser parser = JsonPullParser.newParser(jsonBuilder.toString());
 
-		ComplexData data = ComplexDataGenerated.get(parser);
+		ComplexData data = ComplexDataGen.get(parser);
 
 		assertThat(data.getName(), is("hoge"));
 		assertThat(data.getDate(), is(new Date(12345678)));
@@ -206,7 +206,7 @@ public class JsonAnnotationProcessorTest {
 
 		JsonPullParser parser = JsonPullParser.newParser(jsonBuilder.toString());
 
-		ComplexData data = ComplexDataGenerated.get(parser);
+		ComplexData data = ComplexDataGen.get(parser);
 
 		assertThat(data.getName(), is("hoge"));
 		assertThat(data.getList1(), is(nullValue()));
@@ -226,7 +226,7 @@ public class JsonAnnotationProcessorTest {
 	public void inheritModel() throws IllegalStateException, IOException, JsonFormatException {
 		{
 			String json = "{\"one\":1,\"two\":2}";
-			BaseData data = BaseDataGenerated.get(json);
+			BaseData data = BaseDataGen.get(json);
 
 			assertThat(data.getOne(), is(1L));
 			assertThat(data.getTwo(), is(2L));
@@ -234,7 +234,7 @@ public class JsonAnnotationProcessorTest {
 
 		{
 			String json = "{\"one\":1,\"two\":2,\"three\":3,\"four\":4}";
-			ExtendsData1 data = ExtendsData1Generated.get(json);
+			ExtendsData1 data = ExtendsData1Gen.get(json);
 
 			assertThat(data.getOne(), is(1L));
 			assertThat(data.getTwo(), is(2L));
@@ -244,7 +244,7 @@ public class JsonAnnotationProcessorTest {
 
 		{
 			String json = "{\"one\":1,\"two\":2,\"three\":3,\"four\":4,\"five\":5}";
-			ExtendsData2 data = ExtendsData2Generated.get(json);
+			ExtendsData2 data = ExtendsData2Gen.get(json);
 
 			assertThat(data.getOne(), is(1L));
 			assertThat(data.getTwo(), is(2L));
@@ -253,9 +253,9 @@ public class JsonAnnotationProcessorTest {
 			assertThat(data.getFive(), is(5L));
 
 			StringWriter writer = new StringWriter();
-			ExtendsData2Generated.encode(writer, data);
+			ExtendsData2Gen.encode(writer, data);
 
-			data = ExtendsData2Generated.get(writer.toString());
+			data = ExtendsData2Gen.get(writer.toString());
 
 			assertThat(data.getOne(), is(1L));
 			assertThat(data.getTwo(), is(2L));
@@ -275,7 +275,7 @@ public class JsonAnnotationProcessorTest {
 			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 			MiniData data = new MiniData();
 			data.setId(7);
-			MiniDataGenerated.encode(outputStream, data);
+			MiniDataGen.encode(outputStream, data);
 			String json = new String(outputStream.toByteArray());
 			assertThat(json, is("{\"id\":7}"));
 		}
@@ -284,21 +284,21 @@ public class JsonAnnotationProcessorTest {
 			StringWriter writer = new StringWriter();
 			MiniData data = new MiniData();
 			data.setId(7);
-			MiniDataGenerated.encode(writer, data);
+			MiniDataGen.encode(writer, data);
 			String json = writer.toString();
 			assertThat(json, is("{\"id\":7}"));
 		}
 
 		{
 			StringWriter writer = new StringWriter();
-			MiniDataGenerated.encodeNullToBlank(writer, null);
+			MiniDataGen.encodeNullToBlank(writer, null);
 			String json = writer.toString();
 			assertThat(json, is("{}"));
 		}
 
 		{
 			StringWriter writer = new StringWriter();
-			MiniDataGenerated.encodeNullToNull(writer, null);
+			MiniDataGen.encodeNullToNull(writer, null);
 			String json = writer.toString();
 			assertThat(json, is("null"));
 		}
@@ -314,7 +314,7 @@ public class JsonAnnotationProcessorTest {
 			data.setId(8);
 			list.add(data);
 
-			MiniDataGenerated.encodeList(outputStream, list);
+			MiniDataGen.encodeList(outputStream, list);
 			String json = new String(outputStream.toByteArray());
 			assertThat(json, is("[{\"id\":7},{\"id\":8}]"));
 		}
@@ -330,21 +330,21 @@ public class JsonAnnotationProcessorTest {
 			data.setId(8);
 			list.add(data);
 
-			MiniDataGenerated.encodeList(writer, list);
+			MiniDataGen.encodeList(writer, list);
 			String json = writer.toString();
 			assertThat(json, is("[{\"id\":7},{\"id\":8}]"));
 		}
 
 		{
 			StringWriter writer = new StringWriter();
-			MiniDataGenerated.encodeListNullToBlank(writer, null);
+			MiniDataGen.encodeListNullToBlank(writer, null);
 			String json = writer.toString();
 			assertThat(json, is("[]"));
 		}
 
 		{
 			StringWriter writer = new StringWriter();
-			MiniDataGenerated.encodeListNullToNull(writer, null);
+			MiniDataGen.encodeListNullToNull(writer, null);
 			String json = writer.toString();
 			assertThat(json, is("null"));
 		}
@@ -367,7 +367,7 @@ public class JsonAnnotationProcessorTest {
 		data.setOuterEnumList(Arrays.asList(SampleEnum.PRODUCT, SampleEnum.TEST));
 
 		StringWriter writer = new StringWriter();
-		ComplexDataGenerated.encode(writer, data);
+		ComplexDataGen.encode(writer, data);
 		String json = writer.toString();
 		JsonHash hash = JsonHash.fromString(json);
 		assertThat(hash.getLongOrNull("date"), is(1234567L));
@@ -453,11 +453,11 @@ public class JsonAnnotationProcessorTest {
 		}));
 
 		StringWriter writer = new StringWriter();
-		PrimitiveWrapperListDataGenerated.encode(writer, data1);
+		PrimitiveWrapperListDataGen.encode(writer, data1);
 
 		String json = writer.toString();
 
-		PrimitiveWrapperListData data2 = PrimitiveWrapperListDataGenerated.get(json);
+		PrimitiveWrapperListData data2 = PrimitiveWrapperListDataGen.get(json);
 
 		assertThat(data2.getB(), is(data1.getB()));
 		assertThat(data2.getBool(), is(data1.getBool()));
@@ -486,17 +486,17 @@ public class JsonAnnotationProcessorTest {
 			ForInnerClassData data = new ForInnerClassData();
 			data.setA(1);
 			StringWriter writer = new StringWriter();
-			ForInnerClassDataGenerated.encode(writer, data);
+			ForInnerClassDataGen.encode(writer, data);
 			assertThat("{\"a\":1}", is(writer.toString()));
 		}
 		{ // grandchild
 			InnerClassAB data = new InnerClassAB();
 			data.setC(2);
 			StringWriter writer = new StringWriter();
-			InnerClassABGenerated.encode(writer, data);
+			InnerClassABGen.encode(writer, data);
 			assertThat("{\"c\":2}", is(writer.toString()));
 
-			data = InnerClassABGenerated.get(writer.toString());
+			data = InnerClassABGen.get(writer.toString());
 			assertThat(data.getC(), is(2));
 		}
 		{ // child
@@ -506,11 +506,11 @@ public class JsonAnnotationProcessorTest {
 			list.add(new InnerClassAB());
 			data.setE(list);
 			StringWriter writer = new StringWriter();
-			InnerClassBGenerated.encode(writer, data);
+			InnerClassBGen.encode(writer, data);
 			System.out.println(writer.toString());
 			assertThat("{\"d\":{\"c\":0},\"e\":[{\"c\":0}]}", is(writer.toString()));
 
-			data = InnerClassBGenerated.get(writer.toString());
+			data = InnerClassBGen.get(writer.toString());
 			assertThat(data.getD(), notNullValue());
 			assertThat(data.getE().size(), is(1));
 		}
@@ -577,7 +577,7 @@ public class JsonAnnotationProcessorTest {
 		ContainsAnotherPackageObjectData data = new ContainsAnotherPackageObjectData();
 		data.setAnotherPackageClass(new AnotherPackageClass());
 		StringWriter writer = new StringWriter();
-		ContainsAnotherPackageObjectDataGenerated.encode(writer, data);
+		ContainsAnotherPackageObjectDataGen.encode(writer, data);
 		assertThat("{\"anotherPackageClass\":{\"value\":null},\"anotherPackageClasses\":null}",
 				is(writer.toString()));
 	}
@@ -629,7 +629,7 @@ public class JsonAnnotationProcessorTest {
 			System.out.println(json);
 
 			JsonPullParser parser = JsonPullParser.newParser(json);
-			List<Tweet> list = TweetGenerated.getList(parser);
+			List<Tweet> list = TweetGen.getList(parser);
 			list.toString();
 		} finally {
 			urlConnection.disconnect();
