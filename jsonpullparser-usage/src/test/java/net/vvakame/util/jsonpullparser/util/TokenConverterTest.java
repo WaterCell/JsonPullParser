@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 import net.vvakame.sample.ConverterData;
-import net.vvakame.sample.ConverterDataGenerated;
+import net.vvakame.sample.ConverterDataGen;
 import net.vvakame.util.jsonpullparser.JsonFormatException;
 
 import org.junit.Test;
@@ -45,7 +45,7 @@ public class TokenConverterTest {
 	public void stringConverter() throws IOException, JsonFormatException {
 		String json = "{\"str1\":\"value1\", \"str2\":\"value2\"}";
 
-		ConverterData converterData = ConverterDataGenerated.get(json);
+		ConverterData converterData = ConverterDataGen.get(json);
 
 		assertThat(converterData.getStr1(), is("value1"));
 		assertThat(converterData.getStr2(), is("value2"));
@@ -62,7 +62,7 @@ public class TokenConverterTest {
 		String json =
 				"{\"str1\":\"value1\", \"str2\":\"value2\", \"flatten\":[1,[2,3],[[4,[5,6],7]],[],8]}";
 
-		ConverterData converterData = ConverterDataGenerated.get(json);
+		ConverterData converterData = ConverterDataGen.get(json);
 
 		assertThat(converterData.getStr1(), is("value1"));
 		assertThat(converterData.getStr2(), is("value2"));
@@ -72,7 +72,7 @@ public class TokenConverterTest {
 		}
 
 		StringWriter writer = new StringWriter();
-		ConverterDataGenerated.encode(writer, converterData);
+		ConverterDataGen.encode(writer, converterData);
 		String toJson = writer.toString();
 
 		JsonHash jsonHash = JsonHash.fromString(toJson);

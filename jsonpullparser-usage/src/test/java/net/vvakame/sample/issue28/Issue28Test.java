@@ -25,9 +25,9 @@ public class Issue28Test {
 		Issue28 obj = new Issue28();
 		{
 			StringWriter writer = new StringWriter();
-			Issue28Generated.encode(writer, obj);
+			Issue28Gen.encode(writer, obj);
 
-			Issue28Generated.get(writer.toString());
+			Issue28Gen.get(writer.toString());
 		}
 		{
 			Issue28JsonMeta meta = Issue28JsonMeta.get();

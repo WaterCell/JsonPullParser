@@ -60,7 +60,7 @@ public class ItemMapConverter extends TokenConverter<Map<String, Item>> {
 			}
 			String key = parser.getValueString();
 
-			Item item = ItemGenerated.get(parser, listener);
+			Item item = ItemGen.get(parser, listener);
 			resultMap.put(key, item);
 
 		}
@@ -84,7 +84,7 @@ public class ItemMapConverter extends TokenConverter<Map<String, Item>> {
 			Item item = obj.get(key);
 
 			JsonUtil.putKey(writer, key);
-			ItemGenerated.encode(writer, item);
+			ItemGen.encode(writer, item);
 
 			if (i + 1 < size) {
 				addSeparator(writer);

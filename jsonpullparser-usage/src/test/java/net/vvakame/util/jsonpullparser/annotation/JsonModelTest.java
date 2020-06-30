@@ -20,10 +20,10 @@ import java.io.IOException;
 import java.lang.reflect.Modifier;
 
 import net.vvakame.sample.BaseData;
-import net.vvakame.sample.ConverterDataGenerated;
+import net.vvakame.sample.ConverterDataGen;
 import net.vvakame.sample.GenToPackagePrivateData;
 import net.vvakame.sample.JsonMetaToPackagePrivateValidData;
-import net.vvakame.sample.TestDataGenerated;
+import net.vvakame.sample.TestDataGen;
 import net.vvakame.util.jsonpullparser.JsonFormatException;
 
 import org.junit.Test;
@@ -48,7 +48,7 @@ public class JsonModelTest {
 	public void treatUnknownKeyAsError() throws IOException, JsonFormatException {
 		String json = "{\"str1\":\"hoge\", \"unknown\":{\"test\":[]}, \"str2\":\"fuga\"}";
 
-		ConverterDataGenerated.get(json);
+		ConverterDataGen.get(json);
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class JsonModelTest {
 	public void ignoreUnknownKey() throws IOException, JsonFormatException {
 		String json = "{\"name\":\"hoge\", \"unknown\":{\"test\":[]}, \"str2\":\"fuga\"}";
 
-		TestDataGenerated.get(json);
+		TestDataGen.get(json);
 	}
 
 	/**
@@ -75,7 +75,7 @@ public class JsonModelTest {
 	public void genToPackagePrivate() throws ClassNotFoundException, SecurityException,
 			NoSuchMethodException {
 		Class<?> clazz =
-				Class.forName(GenToPackagePrivateData.class.getCanonicalName() + "Generated");
+				Class.forName(GenToPackagePrivateData.class.getCanonicalName() + "Gen");
 		assertThat(clazz, notNullValue());
 
 		assertThat("class to be package private", Modifier.isPublic(clazz.getModifiers()),
