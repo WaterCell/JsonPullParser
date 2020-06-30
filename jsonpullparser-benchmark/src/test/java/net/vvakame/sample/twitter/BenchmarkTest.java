@@ -60,7 +60,7 @@ public class BenchmarkTest {
 			JsonFormatException {
 		System.out.println("byJsonPullParserToPojo");
 		JsonPullParser parser = JsonPullParser.newParser(tweet);
-		List<Tweet> list = TweetGenerated.getList(parser);
+		List<Tweet> list = TweetGen.getList(parser);
 		assertThat(list.size(), is(not(0)));
 	}
 
