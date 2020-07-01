@@ -8,3 +8,19 @@ dependencies {
 
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
+
+apply plugin: 'maven-publish'
+
+publishing {
+    repositories {
+        maven {
+            url = repository
+        }
+    }
+    publications {
+        core(MavenPublication) {
+            artifactId = 'jsonpullparser-core'
+            from components.java
+        }
+    }
+}

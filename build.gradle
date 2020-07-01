@@ -14,6 +14,12 @@ allprojects {
         google()
         jcenter()
     }
+    group 'net.vvakame'
+    version '1.6.9'
+}
+
+ext {
+    repository = "file://${new File(rootDir, "repository")}"
 }
 
 task clean(type: Delete) {

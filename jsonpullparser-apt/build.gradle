@@ -14,3 +14,19 @@ dependencies {
 
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
+
+apply plugin: 'maven-publish'
+
+publishing {
+    repositories {
+        maven {
+            url = repository
+        }
+    }
+    publications {
+        apt(MavenPublication) {
+            artifactId = 'jsonpullparser-apt'
+            from components.java
+        }
+    }
+}
