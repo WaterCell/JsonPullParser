@@ -14,12 +14,12 @@ allprojects {
         google()
         jcenter()
     }
+    group 'net.vvakame'
+    version '1.6.9'
 }
 
-project.ext {
+ext {
     repository = "file://${new File(rootDir, "repository")}"
-    version = '1.6.9'
-    groupId = 'net.vvakame'
 }
 
 task clean(type: Delete) {

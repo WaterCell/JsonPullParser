@@ -9,15 +9,18 @@ dependencies {
 sourceCompatibility = "1.8"
 targetCompatibility = "1.8"
 
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
-uploadArchives {
+publishing {
     repositories {
-        mavenDeployer {
-            repository url: rootProject.ext.repository
-            pom.version = rootProject.ext.version
-            pom.groupId = rootProject.ext.groupId
-            pom.artifactId = 'jsonpullparser-core'
+        maven {
+            url = repository
+        }
+    }
+    publications {
+        core(MavenPublication) {
+            artifactId = 'jsonpullparser-core'
+            from components.java
         }
     }
 }
